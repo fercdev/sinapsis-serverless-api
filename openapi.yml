@@ -1,0 +1,37 @@
+openapi: 3.0.0
+components:
+  schemas:
+    campaignModel:
+      $schema: ''
+      properties:
+        Campaign:
+          type: object
+          properties:
+            - campaignId:
+                type: int
+            - name:
+                type: string
+            - userId:
+                type: int
+            - scheduledDatetime:
+                type: datetime
+            - status:
+                type: tinyint
+  securitySchemes: {}
+info:
+  title: Sinapsis API
+  description: Api para generar camapanias y mensajes
+  version: '1'
+paths:
+  /campaigns:
+    post:
+      operationId: createCampaign
+      summary: Crear campania
+      description: Permite crear una camapania por cliente
+      responses:
+        '200':
+          description: Retorna el recurso campaign
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/campaignModel'
